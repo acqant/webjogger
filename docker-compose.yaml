@@ -16,7 +16,7 @@ services:
       - /bin/bash
       - -c
       - |
-        ${PYTHON} -m pytest -o log_cli=true log_cli_level=debug tests
+        ${PYTHON} -m pytest -o log_cli=true -o log_cli_level=debug tests
         coverage run -m pytest tests/unit/test_it.py
         coverage report -m
   lint: 
