@@ -17,7 +17,7 @@ services:
       - -c
       - |
         ${PYTHON} -m pytest -o log_cli=true -o log_cli_level=debug tests
-        coverage run -m pytest tests/unit/test_it.py
+        coverage run -m pytest main.py sample_stuff/
         coverage report -m
   lint: 
     build: .

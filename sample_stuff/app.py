@@ -23,13 +23,14 @@ async def root():
     Redirect / to /docs
     """
     logger.debug("IN ROOT")
-    return {'message': 'app message'}
+    return {"message": "app message"}
 
 
 @app.get("/simple_lib")
 async def simple_lib():
     our_int = HelperLib.get_some_int()
-    return {'out_int': our_int}
+    return {"out_int": our_int}
+
 
 items = {}
 
