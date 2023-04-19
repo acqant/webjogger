@@ -1,0 +1,34 @@
+version: '3.7'
+services:
+  work_home:
+    build: .
+    init: true
+    volumes:
+      - .:/workspace
+    tty: true
+  test: 
+    build: .
+    init: true
+    volumes:
+      - .:/workspace
+    tty: true
+    command:
+      - /bin/bash
+      - -c
+      - |
+        ${PYTHON} -m pytest -o log_cli=true log_cli_level=debug tests
+        coverage run -m pytest tests/unit/test_it.py
+        coverage report -m
+  lint: 
+    build: .
+    init: true
+    volumes:
+      - .:/workspace
+    tty: true
+    command:
+      - /bin/bash
+      - -c
+      - |
+        ${PYTHON} -m black sample_stuff/
+        ${PYTHON} -m pylint sample_stuff/
+ 
